@@ -1,0 +1,49 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Add Product{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h4>Add Product</h4>
+        </div>
+        <div class="card-body">
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="name">Product Name</label>
+              <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="type">Product Type</label>
+              <select class="form-control" id="type" name="type" required>
+                <option value="herbs">Herbs</option>
+                <option value="fruits">Fruits</option>
+                <option value="vegetables">Vegetables</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="existing_number">Existing Number</label>
+              <input type="number" class="form-control" id="existing_number" name="existing_number" required>
+            </div>
+            <div class="form-group">
+              <label for="description">Product Description</label>
+              <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="price">Price</label>
+              <input type="number" class="form-control" id="price" name="price" required>
+            </div>
+            <div class="form-group">
+              <label for="image">Product Image</label>
+              <input type="file" class="form-control-file" id="image" name="image" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Product</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
