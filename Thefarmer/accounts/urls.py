@@ -5,8 +5,10 @@ app_name='accounts'
 
 
 urlpatterns = [
+
     path('login/',views.login_page,name='login_page'),
+    path('logout/',views.logout_page,name='logout_page'),
     path('register/',views.register_page,name='register_page'),
     path('Re-password/',views.reset_password,name='reset_password'),
 
-]
+] 

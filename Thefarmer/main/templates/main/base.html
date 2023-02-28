@@ -25,10 +25,21 @@
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'main:home_page' %}">Home</a>
           </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'accounts:login_page' %}">Login</a>
+
+          {% if request.user.farmer %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'farmer:add_product' %}">Add Product</a>
           </li>
+          {% endif %}
+
+          {% if request.user.is_authenticated %}
+          <li class="nav-item"><a href="#" class="nav-link">{{ request.user.first_name }}</a></li>
+          <li class="nav-item"><a href="{% url 'accounts:logout_page' %}" class="nav-link">logout</a></li>
+          {% else %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login_page' %}">Login</a></li>          
+          {% endif %}
+
+        </ul>
 
         </ul>
       </div>
@@ -36,15 +47,15 @@
   </nav>
 
 
-  <div class="container mt-5">
+  <div class="container mt-5 mb-5">
     {% block content %}
     
     {% endblock %}
   </div>
 
-  <footer class="container mt-5">
+  <footer class="container mt-5 mb-5">
   
-    <strong class="text-ceneter">Copyright &copy; 2023 <a href="#">Farmers Market</a>.</strong>
+    <strong >Copyright &copy; 2023 <a href="#">Farmers Market</a>.</strong>
     All rights reserved.
   
   </footer>
